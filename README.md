@@ -176,8 +176,77 @@ To apply a name, edit:
 
 ---
 
-## 9) Notes
+## 9) Deployment Guide
+
+### Vercel Deployment (Recommended)
+
+1. **Push to GitHub** (already done):
+   ```bash
+   git remote add origin https://github.com/waizhussain9955/jewelry-store.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+2. **Deploy to Vercel**:
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Add New..." > "Project"
+   - Import your GitHub repository
+   - Vercel will auto-detect Next.js framework
+   - Click "Deploy"
+
+3. **Custom Domain** (optional):
+   - After deployment, go to project settings
+   - Add custom domain if needed
+
+### Environment Variables (if needed)
+
+Create `.env.local` file:
+```env
+NODE_ENV=production
+```
+
+### Build Commands
+
+```bash
+# Build for production
+npm run build
+
+# Start production server
+npm run start
+
+# Export static files (alternative deployment)
+npm run build
+```
+
+---
+
+## 10) Contact Information Setup
+
+Your contact details are configured in `lib/siteProfile.ts`:
+
+```typescript
+socialMedia: {
+  instagram: "https://www.instagram.com/waiz_hussain_/",
+  facebook: "https://www.facebook.com/waiz.hussain.ansari.2025/",
+  threads: "https://www.threads.com/@waiz_hussain_",
+  github: "https://github.com/waizhussain9955",
+  linkedin: "https://www.linkedin.com/in/waiz-hussain-6750392ba/",
+},
+whatsapp: "+92 327 2051549",
+phone: "+92 327 2051549",
+```
+
+These links are automatically displayed in:
+- Contact page (`/contact`)
+- Footer section
+- WhatsApp direct chat functionality
+
+---
+
+## 11) Notes
 
 - If images are not loading, check image paths under `public/images/...`.
 - If chatbot is not responding, make sure `/api/chat` route is running with app.
 - If cart is not updating, verify `CartProvider` is wrapping the app in `app/layout.tsx`.
+- For Vercel deployment, ensure all environment variables are set in Vercel dashboard.
+- The project is optimized for Vercel with `vercel.json` configuration.
