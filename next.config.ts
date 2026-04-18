@@ -8,7 +8,16 @@ const nextConfig: NextConfig = {
   // Image optimization for static export
   images: {
     unoptimized: true,
-    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+    ],
   },
   // Build optimizations
   compiler: {
