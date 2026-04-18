@@ -23,9 +23,7 @@ export const metadata: Metadata = {
   title: `${SITE_PROFILE.brandName} | Jewelry E-commerce`,
   description: SITE_PROFILE.tagline,
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/vercel.svg',
   },
   openGraph: {
     title: `${SITE_PROFILE.brandName} | Jewelry E-commerce`,
