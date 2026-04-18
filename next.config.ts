@@ -1,11 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Vercel optimizations
+  poweredByHeader: false,
+  generateEtags: false,
+  
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
-  // Image optimization for static export
+  
+  // Image optimization for Vercel
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -13,15 +18,35 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**',
       },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-      },
     ],
   },
-  // Build optimizations
+  
+  // Build optimizations for production
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+    ];
   },
 };
 

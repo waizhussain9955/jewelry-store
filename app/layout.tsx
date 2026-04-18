@@ -62,12 +62,6 @@ export default function RootLayout({
         <CartProvider>
           <CustomCursor />
           {children}
-          <Script
-  src="http://192.168.0.102:3000/widget.js"
-  data-widget-key="wk_0db9e6b5c8990d04f9e5d0cfc9a4d4ae"
-  data-backend-url="http://192.168.0.102:3000"
-  
-></Script>
           <AIChatbot />
         </CartProvider>
       </body>
